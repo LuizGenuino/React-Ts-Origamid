@@ -6,15 +6,20 @@ import React from "react";
 //   onClick?: () => void;
 // };
 
-type ButtonProps = React.PropsWithChildren<{
-  // ja cria o children por padrão, colocando apenas as outras props
-  tamanho?: string;
-  onClick?: () => void;
-}>;
+//   // ja cria o children por padrão, colocando apenas as outras props
+// type ButtonProps = React.PropsWithChildren<{
+//   tamanho?: string;
+//   onClick?: () => void;
+// }>;
 
-const Button = ({ children, onClick, tamanho }: ButtonProps) => {
+// alem de criar o children, agora adiciona todos os parametros do type button como props (ex: onClick, className e etc)
+type ButtonProps = React.ComponentProps<"button"> & {
+  tamanho?: string;
+};
+
+const Button = ({ children, tamanho, ...props }: ButtonProps) => {
   return (
-    <button style={{ fontSize: tamanho || "1.2rem" }} onClick={onClick}>
+    <button style={{ fontSize: tamanho || "1.2rem" }} {...props}>
       {children}
     </button>
   );

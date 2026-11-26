@@ -12,7 +12,7 @@ function App() {
     <>
       <h1>Hello World</h1>
       <p>Total: {total}</p>
-      <Button tamanho={"1.5rem"} onClick={incrementar}>Incrementar</Button>
+      <Button className="btn" tamanho={"1.5rem"} onClick={incrementar}>Incrementar</Button>
     </>
   );
 }
