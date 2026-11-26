@@ -1,4 +1,5 @@
-import PropsComTypes from "./pages/PropsComTypes";
+import HooksComTypes from "./pages/HooksComTypes/HooksComTypes";
+import PropsComTypes from "./pages/PropsComTypes/PropsComTypes";
 
 
 function App() {
@@ -6,6 +7,8 @@ function App() {
   return (
     <>
     <PropsComTypes />
+    <br /><br /><br />
+    <HooksComTypes />
     </>
   );
 }
