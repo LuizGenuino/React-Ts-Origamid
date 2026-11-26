@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./Components/Button";
 import Input from "./Components/Input";
 import videoSrc from "./assets/video.mp4";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 type User = {
   nome: string;
@@ -33,6 +34,9 @@ const HooksComTypes = () => {
   const [value, SetValue] = React.useState<null | Venda[]>(null);
 
   const [playing, setPlaying] = React.useState(false);
+
+  const [volume, setVolume] = useLocalStorage("volume", "0");
+
   const video = React.useRef<HTMLVideoElement>(null);
 
   React.useEffect(() => {
@@ -56,8 +60,11 @@ const HooksComTypes = () => {
   }, [inicio, final]);
 
   React.useEffect(() => {
-    console.log(video.current);
-  }, []);
+    if (!video.current) return;
+    const n = +volume
+    if(n< 0 || n>1) return
+    video.current.volume = n;
+  }, [volume]);
 
   function forward() {
     if (!video.current) return;
@@ -81,6 +88,7 @@ const HooksComTypes = () => {
 
     if (document.pictureInPictureElement) {
       await document.exitPictureInPicture();
+      return;
     }
 
     await video.current.requestPictureInPicture();
@@ -130,17 +138,26 @@ const HooksComTypes = () => {
       <br />
       <br />
       <div>
-        <div style={{ display: "flex", gap: "12px" }}>
-          {playing ? (
-            <button onClick={() => video.current?.pause()}>Pause</button>
-          ) : (
-            <button onClick={() => video.current?.play()}>Play</button>
-          )}
-          <button onClick={forward}>+ 2s</button>
-          <button onClick={() => changePlayBackRate(1)}>1x</button>
-          <button onClick={() => changePlayBackRate(2)}>2x</button>
-          <button onClick={mute}>M</button>
-          <button onClick={PictureInPicture}>PiP</button>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", gap: "12px" }}>
+            {playing ? (
+              <button onClick={() => video.current?.pause()}>Pause</button>
+            ) : (
+              <button onClick={() => video.current?.play()}>Play</button>
+            )}
+            <button onClick={forward}>+ 2s</button>
+            <button onClick={() => changePlayBackRate(.5)}>0.5x</button>
+            <button onClick={() => changePlayBackRate(1)}>1x</button>
+            <button onClick={() => changePlayBackRate(2)}>2x</button>
+            <button onClick={mute}>M</button>
+            <button onClick={PictureInPicture}>PiP</button>
+          </div>
+
+          <div style={{ display: "flex", gap: "12px" }}>
+            <button onClick={() => setVolume("0")}>0</button>
+            <button onClick={() => setVolume("0.5")}>50</button>
+            <button onClick={() => setVolume("1")}>100</button>
+          </div>
         </div>
         <video
           controls
