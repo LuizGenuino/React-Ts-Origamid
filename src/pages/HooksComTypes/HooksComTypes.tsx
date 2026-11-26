@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Components/Button";
 import Input from "./Components/Input";
+import videoSrc from "./assets/video.mp4";
 
 type User = {
   nome: string;
@@ -31,6 +32,8 @@ const HooksComTypes = () => {
   const [final, setFinal] = React.useState("");
   const [value, SetValue] = React.useState<null | Venda[]>(null);
 
+  const video = React.useRef<HTMLVideoElement>(null);
+
   React.useEffect(() => {
     setTimeout(() => {
       setData(user());
@@ -50,6 +53,10 @@ const HooksComTypes = () => {
         .catch((error) => console.log(error));
     }
   }, [inicio, final]);
+
+  React.useEffect(() => {
+    console.log(video.current);
+  }, []);
 
   return (
     <>
@@ -90,6 +97,22 @@ const HooksComTypes = () => {
           ) : (
             <p>Adicione a Data de Inicio e Fim para buscar os dados</p>
           )}
+        </div>
+      </div>
+      <br />
+      <br />
+      <div>
+        <video ref={video} src={videoSrc} muted />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "12px",
+            marginTop: "12px",
+          }}
+        >
+          <button onClick={() => video.current?.play()}>Play</button>
+          <button onClick={() => video.current?.pause()}>Pause</button>
         </div>
       </div>
     </>
