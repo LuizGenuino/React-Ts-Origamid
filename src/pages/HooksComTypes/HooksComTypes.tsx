@@ -79,14 +79,17 @@ const HooksComTypes = () => {
           />
         </div>
         <div>
-          <ul>
-            {value &&
-              value.map((item) => (
+          {value ? (
+            <ul>
+              {value.map((item) => (
                 <li key={item.id}>
                   {item.nome} (R$ {item.preco},00): {item.status}
                 </li>
               ))}
-          </ul>
+            </ul>
+          ) : (
+            <p>Adicione a Data de Inicio e Fim para buscar os dados</p>
+          )}
         </div>
       </div>
     </>
