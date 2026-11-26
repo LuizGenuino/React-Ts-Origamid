@@ -1,18 +1,11 @@
-import { useState } from "react";
-import Button from "./components/Button";
+import PropsComTypes from "./pages/PropsComTypes";
+
 
 function App() {
-  const [total, setTotal] = useState(0);
-
-  const incrementar = () => {
-    setTotal((total) => total + 1);
-  };
 
   return (
     <>
-      <h1>Hello World</h1>
-      <p>Total: {total}</p>
-      <Button className="btn" tamanho={"1.5rem"} onClick={incrementar}>Incrementar</Button>
+    <PropsComTypes />
     </>
   );
 }
