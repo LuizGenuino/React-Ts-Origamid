@@ -3,6 +3,7 @@ import Button from "./Components/Button";
 import Input from "./Components/Input";
 import videoSrc from "./assets/video.mp4";
 import useLocalStorage from "./hooks/useLocalStorage";
+import useFetch from "./hooks/useFetch";
 
 type User = {
   nome: string;
@@ -25,6 +26,15 @@ function user(): User {
   };
 }
 
+type Produto = {
+  id: string;
+  nome: string;
+  preco: number;
+  quantidade: number;
+  descricao: string;
+  internacional: string;
+};
+
 const HooksComTypes = () => {
   const [data, setData] = React.useState<null | User>(null);
   const [total, setTotal] = React.useState(0);
@@ -38,6 +48,11 @@ const HooksComTypes = () => {
   const [volume, setVolume] = useLocalStorage("volume", "0");
 
   const video = React.useRef<HTMLVideoElement>(null);
+
+  // com isso consigo tipar valores da minha função no momento que eu chamo ela no codigo
+  const [id, setId] = React.useState("p001")
+  const produtos = useFetch<Produto[]>("https://data.origamid.dev/produtos/");
+  const produto = useFetch<Produto>(`https://data.origamid.dev/produtos/${id}`);
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -61,8 +76,8 @@ const HooksComTypes = () => {
 
   React.useEffect(() => {
     if (!video.current) return;
-    const n = +volume
-    if(n< 0 || n>1) return
+    const n = +volume;
+    if (n < 0 || n > 1) return;
     video.current.volume = n;
   }, [volume]);
 
@@ -146,7 +161,7 @@ const HooksComTypes = () => {
               <button onClick={() => video.current?.play()}>Play</button>
             )}
             <button onClick={forward}>+ 2s</button>
-            <button onClick={() => changePlayBackRate(.5)}>0.5x</button>
+            <button onClick={() => changePlayBackRate(0.5)}>0.5x</button>
             <button onClick={() => changePlayBackRate(1)}>1x</button>
             <button onClick={() => changePlayBackRate(2)}>2x</button>
             <button onClick={mute}>M</button>
@@ -177,6 +192,25 @@ const HooksComTypes = () => {
         >
           <button onClick={() => video.current?.play()}>Play</button>
           <button onClick={() => video.current?.pause()}>Pause</button>
+        </div>
+      </div>
+      <br />
+      <br />
+      <div className="flex">
+        <div>
+          {produtos.data &&
+            produtos.data.map((prod) => (
+              <button key={prod.id} onClick={() => setId(prod.id)}>{prod.id}</button>
+            ))}
+        </div>
+        <div>
+            <ul>
+                <li>ID: {produto.data?.id}</li>
+                <li>nome: {produto.data?.nome}</li>
+                <li>descricao: {produto.data?.descricao}</li>
+                <li>preco: {produto.data?.preco}</li>
+                <li>quantidade: {produto.data?.quantidade}</li>
+            </ul>
         </div>
       </div>
     </>
