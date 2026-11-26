@@ -18,6 +18,17 @@ type ButtonProps = React.ComponentProps<"button"> & {
 };
 
 const Button = ({ children, tamanho, ...props }: ButtonProps) => {
+
+    // React.MouseEvent -> tipo nativo do evento de click
+    const handleClick1 = (event: React.MouseEvent) => {
+        console.log(event.currentTarget)
+    }
+
+    // React.MouseEventHandler -> tipo nativo de uma função de click
+    const handleClick2: React.MouseEventHandler = (event) => {
+        console.log(event.currentTarget)
+    }
+
   return (
     <button style={{ fontSize: tamanho || "1.2rem" }} {...props}>
       {children}

@@ -16,7 +16,7 @@ const PropsComTypes = () => {
 
   return (
     <>
-      <h1>Props Com TypeScript</h1>
+      <h1>Props Com TypeScript e os Types Definidos pelo React</h1>
       <div style={{ display: "flex" }}>
         <Button className="btn" tamanho={"1.1rem"} onClick={incrementar}>
           Incrementar
