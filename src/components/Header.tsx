@@ -1,9 +1,11 @@
-import React from "react";
 import DateRange from "./DateRange";
 import DateRangeButtonList from "./DateRangeButtonList";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
-  const [title, setTitle] = React.useState("Resumo");
+  const location = useLocation();
+  const title = location.pathname === "/vendas" ? "Vendas" : "Resumo";
+
   return (
     <header className="mb">
       <div className="mb daterange">
