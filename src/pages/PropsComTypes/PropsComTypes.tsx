@@ -12,7 +12,7 @@ const PropsComTypes = () => {
   };
 
   const decrementar = () => {
-    setTotal((total) => total + 1);
+    setTotal((total) => total - 1);
   };
 
   return (
