@@ -46,7 +46,6 @@ const GraficoVendas = ({ data }: { data: Venda[] }) => {
         <LineChart
           style={{
             aspectRatio: 1.618,
-            maxWidth: 800,
             margin: "auto",
           }}
           responsive
