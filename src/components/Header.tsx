@@ -3,8 +3,8 @@ import { useData } from "../contexts/DataContext";
 import DateRange from "./DateRange";
 
 const Header = () => {
-  const { data } = useData();
-  console.table(data);
+  //   const { data } = useData();
+  //   console.table(data);
   return (
     <div>
       <DateRange />
