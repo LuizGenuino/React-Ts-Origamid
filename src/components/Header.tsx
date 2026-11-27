@@ -1,14 +1,16 @@
-import React from "react";
-import { useData } from "../contexts/DataContext";
 import DateRange from "./DateRange";
+import DateRangeButtonList from "./DateRangeButtonList";
 
 const Header = () => {
   //   const { data } = useData();
   //   console.table(data);
   return (
-    <div>
-      <DateRange />
-    </div>
+    <header className="mb">
+      <div className="mb">
+        <DateRange />
+      </div>
+      <DateRangeButtonList />
+    </header>
   );
 };
 
