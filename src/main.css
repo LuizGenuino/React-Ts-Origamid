@@ -29,7 +29,8 @@ h3 {
     margin: 0px;
 }
 
-ul, li {
+ul,
+li {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -41,7 +42,7 @@ ul, li {
 }
 
 /* todos os filhos do componente com a classe flex */
-.flex > * {
+.flex>* {
     flex: 1;
 }
 
@@ -58,15 +59,19 @@ ul, li {
 .bg-1 {
     background: var(---color-1);
 }
+
 .bg-2 {
     background: var(---color-2);
 }
+
 .bg-3 {
     background: var(---color-3);
 }
+
 .bg-4 {
     background: var(---color-4);
 }
+
 .bg-5 {
     background: var(---color-5);
 }
@@ -75,4 +80,32 @@ ul, li {
     display: grid;
     padding: var(--gap);
     gap: var(--gap);
+}
+
+.resumo {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.resumo h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--gap);
+    color: var(---color-1);
+}
+
+.venda {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    gap: var(--gap);
+    margin-bottom: var(--gap);
+    align-items: center;
+}
+
+.venda div:last-child {
+    justify-self: end;
+}
+
+.venda a {
+    text-decoration: none;
+    color: inherit;
 }
