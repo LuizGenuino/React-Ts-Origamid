@@ -1,5 +1,5 @@
 html {
-    ---color-1: #463220;
+    --color-1: #463220;
     --color-2: #66593c;
     --color-3: #eceadd;
     --color-4: #f7f8f5;
@@ -57,28 +57,63 @@ li {
 }
 
 .bg-1 {
-    background: var(---color-1);
+    background-color: var(--color-1);
 }
 
 .bg-2 {
-    background: var(---color-2);
+    background-color: var(--color-2);
 }
 
 .bg-3 {
-    background: var(---color-3);
+    background-color: var(--color-3);
 }
 
 .bg-4 {
-    background: var(---color-4);
+    background-color: var(--color-4);
 }
 
 .bg-5 {
-    background: var(---color-5);
+    background-color: var(--color-5);
 }
 
 .container {
     display: grid;
     padding: var(--gap);
+    gap: var(--gap);
+    grid-template-columns: 240px auto;
+}
+
+
+.sidenav li {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-s);
+}
+
+.sidenav li span {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--color-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--gap);
+}
+
+.sidenav li a {
+    flex: 1;
+    text-decoration: none;
+    color: var(---color-1);
+    padding: var(--gap-s) 0;
+}
+
+.sidenav li:hover span {
+    background-color: var(--color-3);
+}
+
+.daterange {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: var(--gap);
 }
 
