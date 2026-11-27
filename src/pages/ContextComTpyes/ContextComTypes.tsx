@@ -14,7 +14,7 @@ const ContextComTypes = () => {
             <p>Playback: {data?.preferencias.playback}</p>
             <p>Volume: {data?.preferencias.volume}</p>
         </div>
-      <h1>ContextComTypes</h1>
+      <h1>Context Com Types</h1>
       <button onClick={() => setDark(v => !v)} >Muda no Header</button>
     </div>
   );

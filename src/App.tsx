@@ -4,6 +4,7 @@ import { UiContextProvider } from "./pages/ContextComTpyes/contexts/Uicontext";
 import { UserContextProvider } from "./pages/ContextComTpyes/contexts/USerContext";
 import HooksComTypes from "./pages/HooksComTypes/HooksComTypes";
 import PropsComTypes from "./pages/PropsComTypes/PropsComTypes";
+import ReducerComTypes from "./pages/ReducerComTypes/ReducerComTypes";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
           <ContextComTypes />
         </UserContextProvider>
       </UiContextProvider>
+      <br />
+      <br />
+      <br />
+      <ReducerComTypes />
     </>
   );
 }

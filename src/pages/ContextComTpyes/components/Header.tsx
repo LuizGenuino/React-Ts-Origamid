@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <div>
-      <h1>Header: {String(dark)}</h1>
+      <h1>Header Com Context: {String(dark)}</h1>
       <p>Usando o Context para mudar valores em componentes diferentes </p>
       {data && <h1>{data.nome}</h1>}
     </div>
